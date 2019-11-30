@@ -25,7 +25,7 @@ public class Controller {
         for (int i = 0; i < field.getMyHealth(); i++) {
             root.getChildren().add(field.drawHeart(i*60+1000,30));
         }
-        NormalTower normalTower = new NormalTower(600,400,3,0,3,field);
+        NormalTower normalTower = new NormalTower(600,400,field);
         root.getChildren().add(normalTower.drawTower());
         new AnimationTimer(){
             int i = 0;

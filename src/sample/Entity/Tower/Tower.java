@@ -78,11 +78,11 @@ public abstract class Tower {
             if (distance(dt)) enemyNear.add(enemyList.get(i));
         }
 
-        while(true && enemyNear.size() > 0){
+        while(enemyNear.size() > 0){
             double ePosX = enemyNear.get(0).getCanvas().getTranslateX();
             double ePosY = enemyNear.get(0).getCanvas().getTranslateY();
             dt = Math.sqrt(Math.pow(posX-ePosX,2) + Math.pow(posY-ePosY,2));
-            if (!distance(dt)) enemyNear.remove(0);
+            if (!distance(dt) || enemyNear.get(0).hasDestroyed() == true) enemyNear.remove(0);
             else break;
         }
     }

@@ -10,8 +10,8 @@ import sample.Gamefield;
 
 public class NormalTower extends Tower {
 
-    public NormalTower(int posX,int posY,int speed, int range, int damage, Gamefield field){
-        super(posX,posY,speed,range,damage,field);
+    public NormalTower(int posX,int posY, Gamefield field){
+        super(posX,posY,Config.NORMAL_TOWER_SPEED,Config.NORMAL_TOWER_RANGE,Config.NORMAL_TOWER_DAMAGE,field);
     }
     @Override
     public ImageView drawTower(){
@@ -25,7 +25,7 @@ public class NormalTower extends Tower {
 
     @Override
     public boolean distance(double dt){
-        if (dt < Config.NORMAL_RANGE) return true;
+        if (dt < Config.NORMAL_TOWER_RANGE) return true;
         return false;
     }
 

@@ -8,8 +8,8 @@ import sample.Gamefield;
 public class BossEnemy extends Enemy {
     private Canvas canvas = new Canvas(Config.TILE_SIZE,Config.TILE_SIZE);
 
-    public BossEnemy(int health, int armor, int speed, int reward, Gamefield field){
-        super(health, armor, speed, reward, field);
+    public BossEnemy(Gamefield field){
+        super(Config.BOSS_ENEMY_HEALTH, Config.BOSS_ENEMY_ARMOR, Config.BOSS_ENEMY_SPEED, Config.BOSS_ENEMY_REWARD, field);
     }
 
     @Override

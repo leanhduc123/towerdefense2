@@ -9,8 +9,8 @@ import sample.Gamefield;
 public class NormalEnemy extends Enemy {
     private Canvas canvas = new Canvas(Config.TILE_SIZE, Config.TILE_SIZE);
 
-    public NormalEnemy(int health, int armor, int speed, int reward, Gamefield field) {
-        super(health, armor, speed, reward, field);
+    public NormalEnemy(Gamefield field) {
+        super(Config.NORMAL_ENEMY_HEALTH, Config.NORMAL_ENEMY_ARMOR, Config.NORMAL_ENEMY_SPEED, Config.NORMAL_ENEMY_REWARD, field);
     }
 
     @Override

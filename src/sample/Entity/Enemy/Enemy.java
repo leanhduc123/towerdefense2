@@ -18,6 +18,7 @@ public abstract class Enemy implements Destroyable {
     private int speed;
     private int reward;
     private Gamefield field;
+    private boolean isDestroyed = false;
 
     public Enemy(){
 
@@ -99,4 +100,11 @@ public abstract class Enemy implements Destroyable {
         this.reward = reward;
     }
 
+    public void setDestroyed(boolean destroyed) {
+        isDestroyed = destroyed;
+    }
+
+    public boolean hasDestroyed(){
+        return isDestroyed;
+    }
 }

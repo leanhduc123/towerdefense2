@@ -7,8 +7,8 @@ import sample.Gamefield;
 
 public class TankerEnemy extends Enemy {
     private Canvas canvas = new Canvas(Config.TILE_SIZE,Config.TILE_SIZE);
-    public TankerEnemy(int health, int armor, int speed, int reward, Gamefield field){
-        super(health, armor, speed, reward, field);
+    public TankerEnemy(Gamefield field){
+        super(Config.TANK_ENEMY_HEALTH, Config.TANK_ENEMY_ARMOR, Config.TANK_ENEMY_SPEED, Config.TANK_ENEMY_REWARD, field);
     }
     @Override
     public Canvas getCanvas(){

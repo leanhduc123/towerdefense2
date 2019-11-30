@@ -119,15 +119,15 @@ public class Gamefield {
 
     public void addEnemy(){
         for (int i = 0; i < 18; i++){
-            enemyList.add(new NormalEnemy(Config.NORMAL_ENEMY_HEALTH, Config.NORMAL_ENEMY_ARMOR, Config.NORMAL_ENEMY_SPEED, Config.NORMAL_ENEMY_REWARD, this));
+            enemyList.add(new NormalEnemy(this));
         }
         for (int i = 0; i < 9; i++){
-            enemyList.add(new SmallEnemy(Config.SMALL_ENEMY_HEALTH, Config.SMALL_ENEMY_ARMOR, Config.SMALL_ENEMY_SPEED, Config.SMALL_ENEMY_REWARD, this));
+            enemyList.add(new SmallEnemy(this));
         }
         for (int i = 0; i < 9; i++){
-            enemyList.add(new TankerEnemy(Config.TANK_ENEMY_HEALTH, Config.TANK_ENEMY_ARMOR, Config.TANK_ENEMY_SPEED, Config.TANK_ENEMY_REWARD, this));
+            enemyList.add(new TankerEnemy(this));
         }
-        enemyList.add(new BossEnemy(Config.BOSS_ENEMY_HEALTH,Config.BOSS_ENEMY_ARMOR, Config.BOSS_ENEMY_SPEED, Config.BOSS_ENEMY_REWARD, this));
+        enemyList.add(new BossEnemy(this));
     }
 
     public void removeEnemy(int k){
@@ -145,9 +145,6 @@ public class Gamefield {
         ImageView remove2 = new ImageView(new Image("file:src/resources/tile/2.png"));
         remove.setX(posX);
         remove.setY(posY);
-        int movex = 30;
-        int movey = 30;
-        System.out.println("hello");
         return remove;
     }
 }
