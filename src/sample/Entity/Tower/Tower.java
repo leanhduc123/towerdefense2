@@ -1,8 +1,7 @@
 package sample.Entity.Tower;
 
-import javafx.scene.canvas.Canvas;
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import sample.Entity.Destroyable;
 import sample.Entity.Enemy.Enemy;
 import sample.Gamefield;
 
@@ -62,9 +61,9 @@ public abstract class Tower {
         imageView.setFitWidth(0);
     }
 
-    public abstract ImageView drawTower();
+    public abstract void drawTower(Group root);
 
-    public abstract Canvas shooting();
+    public abstract void shooting(Group root);
 
     public abstract boolean distance(double dt);
 

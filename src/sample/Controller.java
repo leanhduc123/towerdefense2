@@ -2,7 +2,6 @@ package sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
 import sample.Entity.Enemy.*;
 import sample.Entity.Tower.NormalTower;
 
@@ -26,7 +25,7 @@ public class Controller {
             root.getChildren().add(field.drawHeart(i*60+1000,30));
         }
         NormalTower normalTower = new NormalTower(600,400,field);
-        root.getChildren().add(normalTower.drawTower());
+        normalTower.drawTower(root);
         new AnimationTimer(){
             int i = 0;
             int j = 0;
@@ -34,7 +33,7 @@ public class Controller {
             public void handle(long currentNanoTime){
                 j++;
                 if (j % 20 == 0){
-                    root.getChildren().add(normalTower.shooting());
+                    normalTower.shooting(root);
                 }
                 if (j % 100 == 0 && i < 30){
                     root.getChildren().add(enemyList.get(i).EnemyAppear());

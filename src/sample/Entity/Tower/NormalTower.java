@@ -1,5 +1,6 @@
 package sample.Entity.Tower;
 
+import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,13 +15,13 @@ public class NormalTower extends Tower {
         super(posX,posY,Config.NORMAL_TOWER_SPEED,Config.NORMAL_TOWER_RANGE,Config.NORMAL_TOWER_DAMAGE,field);
     }
     @Override
-    public ImageView drawTower(){
+    public void drawTower(Group root){
         ImageView tower = new ImageView(new Image("file:src/resources/tile/tower/normal.png"));
         tower.setX(super.getPosX());
         tower.setY(super.getPosY());
         tower.setFitWidth(Config.TILE_SIZE);
         tower.setFitHeight(Config.TILE_SIZE);
-        return tower;
+        root.getChildren().add(tower);
     }
 
     @Override
@@ -30,10 +31,10 @@ public class NormalTower extends Tower {
     }
 
     @Override
-    public Canvas shooting(){
+    public void shooting(Group root){
         inCircle();
         if (super.getEnemyNear().size() > 0)
-        return (new NormalBullet(super.getPosX(),super.getPosY(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateX(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateY(),super.getDamage(),super.getEnemyNear())).drawBullet();
-        return new Canvas(0,0);
+        root.getChildren().add((new NormalBullet(super.getPosX(),super.getPosY(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateX(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateY(),super.getDamage(),super.getEnemyNear())).drawBullet());
+        else root.getChildren().add(new Canvas(0,0));
     }
 }
