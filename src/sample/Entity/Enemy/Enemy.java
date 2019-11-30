@@ -3,6 +3,7 @@ package sample.Entity.Enemy;
 import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -38,7 +39,7 @@ public abstract class Enemy implements Destroyable {
     }
 
     //Draw enemy
-    public abstract Canvas EnemyAppear();
+    public abstract void EnemyAppear(Group root);
 
     public abstract Canvas getCanvas();
 
@@ -59,8 +60,8 @@ public abstract class Enemy implements Destroyable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 onDestroy(canvas);
-//                field.setMyHealth(field.getMyHealth()-1);
-//                field.removeEnemy(0);
+                field.setMyHealth(field.getMyHealth()-1);
+                field.removeEnemy(0);
             }
         });
         pathTransition.setAutoReverse(false);

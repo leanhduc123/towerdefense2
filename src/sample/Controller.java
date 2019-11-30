@@ -36,7 +36,7 @@ public class Controller {
                     normalTower.shooting(root);
                 }
                 if (j % 100 == 0 && i < 30){
-                    root.getChildren().add(enemyList.get(i).EnemyAppear());
+                    enemyList.get(i).EnemyAppear(root);
                     i++;
                 }
                 if (j % 50 == 0) normalTower.inCircle();

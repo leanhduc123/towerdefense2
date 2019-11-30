@@ -1,5 +1,6 @@
 package sample.Entity.Enemy;
 
+import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import sample.Config;
@@ -18,10 +19,10 @@ public class BossEnemy extends Enemy {
     }
 
     @Override
-    public Canvas EnemyAppear(){
-        canvas.setTranslateX(Config.spawner.getPosX()+30);
-        canvas.setTranslateY(Config.spawner.getPosY()+30);
+    public void EnemyAppear(Group root){
+        canvas.setTranslateX(Config.spawner.getPosX());
+        canvas.setTranslateY(Config.spawner.getPosY());
         canvas.getGraphicsContext2D().drawImage(new Image("file:src/resources/enemy/boss.png"),0,0);
-        return enemyMovement(canvas);
+        root.getChildren().add(enemyMovement(canvas));
     }
 }
