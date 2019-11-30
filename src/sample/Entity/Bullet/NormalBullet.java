@@ -16,8 +16,8 @@ public class NormalBullet extends Bullet {
     @Override
     public Canvas drawBullet(){
         Canvas bullet = new Canvas(Config.TILE_SIZE,Config.TILE_SIZE);
-        bullet.setTranslateX(super.getPosX()+30);
-        bullet.setTranslateY(super.getPosY()+30);
+        bullet.setTranslateX(super.getPosX());
+        bullet.setTranslateY(super.getPosY());
         bullet.getGraphicsContext2D().drawImage(new Image("file:src/resources/bullet/normal.png"),0,0);
         return bulletMovement(bullet);
     }

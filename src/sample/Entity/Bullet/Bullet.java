@@ -57,7 +57,7 @@ public abstract class Bullet implements Destroyable {
         path.getElements().add(new MoveTo(posX+30,posY+30));
         path.getElements().add(new LineTo(toX+30,toY+30));
         PathTransition pathTransition = new PathTransition();
-        pathTransition.setDuration(Duration.millis(70));
+        pathTransition.setDuration(Duration.millis(50));
         pathTransition.setNode(canvas);
         pathTransition.setPath(path);
         pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
