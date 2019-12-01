@@ -59,9 +59,11 @@ public abstract class Enemy implements Destroyable {
         pathTransition.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                onDestroy(canvas);
-                field.setMyHealth(field.getMyHealth()-1);
-                field.removeEnemy(0);
+                if (!isDestroyed){
+                    onDestroy(canvas);
+                    field.setMyHealth(field.getMyHealth()-1);
+                    field.removeEnemy(0);
+                }
             }
         });
         pathTransition.setAutoReverse(false);

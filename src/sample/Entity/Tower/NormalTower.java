@@ -16,6 +16,12 @@ public class NormalTower extends Tower {
     }
     @Override
     public void drawTower(Group root){
+        ImageView platform = new ImageView(new Image("file:src/resources/tile/tower/platform.png"));
+        platform.setX(super.getPosX());
+        platform.setY(super.getPosY());
+        platform.setFitWidth(Config.TILE_SIZE);
+        platform.setFitHeight(Config.TILE_SIZE);
+        root.getChildren().add(platform);
         ImageView tower = new ImageView(new Image("file:src/resources/tile/tower/normal.png"));
         tower.setX(super.getPosX());
         tower.setY(super.getPosY());
