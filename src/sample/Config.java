@@ -30,15 +30,15 @@ public class Config {
 
     public static final int MACHINE_GUN_RANGE = 120;
     public static final int MACHINE_GUN_SPEED = 2;
-    public static final int MACHINE_GUN_DAMAGE = 3;
+    public static final int MACHINE_GUN_DAMAGE = 1;
 
     public static final int NORMAL_TOWER_RANGE = 180;
     public static final int NORMAL_TOWER_SPEED = 3;
-    public static final int NORMAL_TOWER_DAMAGE = 3;
+    public static final int NORMAL_TOWER_DAMAGE = 2;
 
     public static final int SNIPER_TOWER_RANGE = 300;
     public static final int SNIPER_TOWER_SPEED = 2;
-    public static final int SNIPER_TOWER_DAMAGE = 5;
+    public static final int SNIPER_TOWER_DAMAGE = 4;
 
     public static final int NORMAL_ENEMY_HEALTH = 2;
     public static final int NORMAL_ENEMY_ARMOR = 1;

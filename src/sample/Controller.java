@@ -11,7 +11,7 @@ public class Controller {
     private Group root;
     private Gamefield field;
     private GameStage stage;
-    public List<Enemy> enemyList;
+    private List<Enemy> enemyList;
     public Controller(Group root, Gamefield field, GameStage stage){
         this.root = root;
         this.field = field;
@@ -32,7 +32,7 @@ public class Controller {
             int health = field.getMyHealth();
             public void handle(long currentNanoTime){
                 j++;
-                if (j % 20 == 0){
+                if (j % 30 == 0){
                     normalTower.shooting(root);
                 }
                 if (j % 100 == 0 && i < 30){
