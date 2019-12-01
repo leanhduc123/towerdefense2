@@ -10,7 +10,6 @@ import javafx.scene.shape.Path;
 import javafx.util.Duration;
 import sample.Entity.Destroyable;
 import sample.Entity.Enemy.Enemy;
-import sample.Gamefield;
 
 import java.util.List;
 
