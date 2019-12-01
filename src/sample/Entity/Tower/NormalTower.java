@@ -27,6 +27,7 @@ public class NormalTower extends Tower {
         tower.setY(super.getPosY());
         tower.setFitWidth(Config.TILE_SIZE);
         tower.setFitHeight(Config.TILE_SIZE);
+        setTower(tower);
         root.getChildren().add(tower);
     }
 

@@ -32,9 +32,10 @@ public class Controller {
             int health = field.getMyHealth();
             public void handle(long currentNanoTime){
                 j++;
-                if (j % 30 == 0){
+                if (j % 60 == 0){
                     normalTower.shooting(root);
                 }
+                normalTower.towerRotate();
                 if (j % 100 == 0 && i < 30){
                     enemyList.get(i).EnemyAppear(root);
                     i++;

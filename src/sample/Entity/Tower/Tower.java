@@ -1,7 +1,9 @@
 package sample.Entity.Tower;
 
+import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import sample.Entity.Enemy.Enemy;
 import sample.Gamefield;
 
@@ -16,6 +18,7 @@ public abstract class Tower {
     private int range;
     private int damage;
     private Gamefield field;
+    private ImageView tower;
     private List<Enemy> enemyNear = new ArrayList<>();
 
     public Tower(int posX,int posY,int speed, int range, int damage, Gamefield field){
@@ -25,6 +28,14 @@ public abstract class Tower {
         this.range  = range;
         this.damage = damage;
         this.field  = field;
+    }
+
+    public void setTower(ImageView tower) {
+        this.tower = tower;
+    }
+
+    public ImageView getTower() {
+        return tower;
     }
 
     public int getPosX() {
@@ -83,6 +94,19 @@ public abstract class Tower {
             dt = Math.sqrt(Math.pow(posX-ePosX,2) + Math.pow(posY-ePosY,2));
             if (!distance(dt) || enemyNear.get(0).hasDestroyed() == true) enemyNear.remove(0);
             else break;
+        }
+    }
+
+    public void towerRotate(){
+        if (enemyNear.size() > 0){
+            Enemy enemy = enemyNear.get(0);
+            RotateTransition rotateTransition = new RotateTransition();
+            rotateTransition.setDuration(Duration.millis(30));
+            rotateTransition.setNode(tower);
+            rotateTransition.setByAngle(10);
+            rotateTransition.setCycleCount(1);
+            rotateTransition.setAutoReverse(false);
+            rotateTransition.play();
         }
     }
 }
