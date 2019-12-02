@@ -1,9 +1,7 @@
 package sample.Entity.Tower;
 
-import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 import sample.Entity.Enemy.Enemy;
 import sample.Gamefield;
 
@@ -100,13 +98,13 @@ public abstract class Tower {
     public void towerRotate(){
         if (enemyNear.size() > 0){
             Enemy enemy = enemyNear.get(0);
-            RotateTransition rotateTransition = new RotateTransition();
-            rotateTransition.setDuration(Duration.millis(30));
-            rotateTransition.setNode(tower);
-            rotateTransition.setByAngle(10);
-            rotateTransition.setCycleCount(1);
-            rotateTransition.setAutoReverse(false);
-            rotateTransition.play();
+            double vectorX = - posX + enemy.getCanvas().getTranslateX();
+            double vectorY = - posY + enemy.getCanvas().getTranslateY();
+            double X = posY + (-posX/vectorX)*vectorY;
+            double Y = posX + (-posY/vectorY)*vectorX;
+            double angle = Math.atan(Y/X) / (Math.PI) * 180;
+            if (enemy.getCanvas().getTranslateY() >= posY) angle += 180;
+            tower.setRotate(angle);
         }
     }
 }
