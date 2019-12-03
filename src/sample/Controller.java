@@ -1,13 +1,18 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import sample.Entity.Enemy.*;
 import sample.Entity.Tower.NormalTower;
+import sample.Entity.Tower.SniperTower;
 
 import java.util.List;
 
@@ -35,6 +40,26 @@ public class Controller {
         }
         NormalTower normalTower = new NormalTower(600,400,field);
         normalTower.drawTower(root);
+        SniperTower sniperTower = new SniperTower(900, 400,field);
+        sniperTower.drawTower(root);
+        Image sound = new Image("file:src/sound.png");
+        ImageView imageView = new ImageView(sound);
+        imageView.setTranslateX(100);
+        imageView.setTranslateY(50);
+        root.getChildren().add(imageView);
+        imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (!field.sound()) {
+                    imageView.setImage(new Image("file:src/mute.png"));
+                    field.setMute(true);
+                }
+                else {
+                    imageView.setImage(new Image("file:src/sound.png"));
+                    field.setMute(false);
+                }
+            }
+        });
         new AnimationTimer(){
             int i = 0;
             int j = 0;
@@ -43,8 +68,11 @@ public class Controller {
                 j++;
                 if (j % 60 == 0){
                     normalTower.shooting(root);
+                    sniperTower.shooting(root);
                 }
+                System.out.println(field.sound());
                 normalTower.towerRotate();
+                sniperTower.towerRotate();
                 if (j % 100 == 0 && i < 30){
                     enemyList.get(i).EnemyAppear(root);
                     i++;

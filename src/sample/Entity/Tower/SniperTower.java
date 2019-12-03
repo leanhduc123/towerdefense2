@@ -43,9 +43,9 @@ public class SniperTower extends Tower{
         if (super.getEnemyNear().size() > 0) {
             Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/shoot.mp3");
             MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setAutoPlay(true);
+            if (!getField().sound()) mediaPlayer.setAutoPlay(true);
+            else mediaPlayer.setAutoPlay(false);
             root.getChildren().add((new SniperBullet(super.getPosX(), super.getPosY(), (int) super.getEnemyNear().get(0).getCanvas().getTranslateX(), (int) super.getEnemyNear().get(0).getCanvas().getTranslateY(), super.getDamage(), super.getEnemyNear())).drawBullet());
-            root.getChildren().add(new MediaView(mediaPlayer));
         }
         else root.getChildren().add(new Canvas(0,0));
     }

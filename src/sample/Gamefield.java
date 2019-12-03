@@ -19,8 +19,17 @@ public class Gamefield {
     private List<Point> pointList = new ArrayList<>();
     private List<Enemy> enemyList = new ArrayList<>();
     private int myHealth = 3;
+    private boolean isMute = false;
 
     public Gamefield(){
+    }
+
+    public void setMute(boolean mute) {
+        isMute = mute;
+    }
+
+    public boolean sound(){
+        return isMute;
     }
 
     public List<Point> getPointList() {
