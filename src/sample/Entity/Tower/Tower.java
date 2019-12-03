@@ -10,14 +10,14 @@ import java.util.List;
 
 
 public abstract class Tower {
-    private int posX;
-    private int posY;
-    private int speed;
-    private int range;
-    private int damage;
-    private Gamefield field;
-    private ImageView tower;
-    private List<Enemy> enemyNear = new ArrayList<>();
+    protected int posX;
+    protected int posY;
+    protected int speed;
+    protected int range;
+    protected int damage;
+    protected Gamefield field;
+    protected ImageView tower;
+    protected List<Enemy> enemyNear = new ArrayList<>();
 
     public Tower(int posX,int posY,int speed, int range, int damage, Gamefield field){
         this.posX     = posX;
@@ -83,7 +83,7 @@ public abstract class Tower {
             double ePosX = enemyList.get(i).getCanvas().getTranslateX();
             double ePosY = enemyList.get(i).getCanvas().getTranslateY();
             dt = Math.sqrt(Math.pow(posX-ePosX,2) + Math.pow(posY-ePosY,2));
-            if (distance(dt)) enemyNear.add(enemyList.get(i));
+            if (distance(dt) && !enemyList.get(i).hasDestroyed()) enemyNear.add(enemyList.get(i));
         }
 
         while(enemyNear.size() > 0){
@@ -96,7 +96,7 @@ public abstract class Tower {
     }
 
     public void towerRotate(){
-        if (enemyNear.size() > 0  && enemyNear.get(0).hasDestroyed()){
+        if (enemyNear.size() > 0  && !enemyNear.get(0).hasDestroyed()){
             Enemy enemy = enemyNear.get(0);
             double vectorX = - posX + enemy.getCanvas().getTranslateX();
             double vectorY = - posY + enemy.getCanvas().getTranslateY();
@@ -104,6 +104,7 @@ public abstract class Tower {
             double Y = posX + (-posY/vectorY)*vectorX;
             double angle = Math.atan(Y/X) / (Math.PI) * 180;
             if (enemy.getCanvas().getTranslateY() >= posY) angle += 180;
+            if (tower == null) System.out.println("yes");
             tower.setRotate(angle);
         }
     }

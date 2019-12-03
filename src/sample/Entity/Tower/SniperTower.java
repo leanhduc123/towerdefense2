@@ -23,11 +23,12 @@ public class SniperTower extends Tower{
         platform.setFitWidth(Config.TILE_SIZE);
         platform.setFitHeight(Config.TILE_SIZE);
         root.getChildren().add(platform);
-        ImageView tower = new ImageView(new Image("file:src/resources/tile/tower/normal.png"));
+        ImageView tower = new ImageView(new Image("file:src/resources/tile/tower/sniper.png"));
         tower.setX(super.getPosX());
         tower.setY(super.getPosY());
         tower.setFitWidth(Config.TILE_SIZE);
         tower.setFitHeight(Config.TILE_SIZE);
+        setTower(tower);
         root.getChildren().add(tower);
     }
 

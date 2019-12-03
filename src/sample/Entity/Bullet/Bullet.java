@@ -66,11 +66,12 @@ public abstract class Bullet implements Destroyable {
             public void handle(ActionEvent actionEvent) {
                 onDestroy(canvas);
                 Enemy enemy = enemyNear.get(0);
-                System.out.println(enemy.getArmor());
-                enemy.setHealth(enemy.getHealth()-(damage-enemy.getArmor()));
-                if (enemy.getHealth() <= 0){
-                    onDestroy(enemy.getCanvas());
-                    enemy.setDestroyed(true);
+                if (!enemy.hasDestroyed()) {
+                    enemy.setHealth(enemy.getHealth() - (damage - enemy.getArmor()));
+                    if (enemy.getHealth() <= 0) {
+                        onDestroy(enemy.getCanvas());
+                        enemy.setDestroyed(true);
+                    }
                 }
             }
         });

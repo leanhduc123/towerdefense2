@@ -6,10 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import sample.Entity.Enemy.*;
 import sample.Entity.Tower.NormalTower;
 import sample.Entity.Tower.SniperTower;
@@ -27,11 +23,6 @@ public class Controller {
         field.addEnemy();
         this.enemyList = field.getEnemyList();
         this.stage = stage;
-        Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/sound.mp3");
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        MediaView mediaView = new MediaView(mediaPlayer);
-        mediaPlayer.play();
-        root.getChildren().add(mediaView);
     }
 
     public void start(){
@@ -40,7 +31,7 @@ public class Controller {
         }
         NormalTower normalTower = new NormalTower(600,400,field);
         normalTower.drawTower(root);
-        SniperTower sniperTower = new SniperTower(900, 400,field);
+        SniperTower sniperTower = new SniperTower(960, 400,field);
         sniperTower.drawTower(root);
         Image sound = new Image("file:src/sound.png");
         ImageView imageView = new ImageView(sound);
@@ -68,16 +59,20 @@ public class Controller {
                 j++;
                 if (j % 60 == 0){
                     normalTower.shooting(root);
+                }
+                if (j % 80 == 0){
                     sniperTower.shooting(root);
                 }
-                System.out.println(field.sound());
                 normalTower.towerRotate();
                 sniperTower.towerRotate();
                 if (j % 100 == 0 && i < 30){
                     enemyList.get(i).EnemyAppear(root);
                     i++;
                 }
-                if (j % 50 == 0) normalTower.inCircle();
+                if (j % 50 == 0) {
+                    normalTower.inCircle();
+                    sniperTower.inCircle();
+                }
                 if (health != field.getMyHealth()){
                     root.getChildren().add(field.removeHeart((field.getMyHealth())*60+1000,30));
                 }
