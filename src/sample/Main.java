@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Tower Defense");
         Group root = (new GameStage()).getRoot();
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

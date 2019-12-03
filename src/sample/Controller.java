@@ -2,6 +2,10 @@ package sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import sample.Entity.Enemy.*;
 import sample.Entity.Tower.NormalTower;
 
@@ -18,6 +22,11 @@ public class Controller {
         field.addEnemy();
         this.enemyList = field.getEnemyList();
         this.stage = stage;
+        Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/sound.mp3");
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaView mediaView = new MediaView(mediaPlayer);
+        mediaPlayer.play();
+        root.getChildren().add(mediaView);
     }
 
     public void start(){

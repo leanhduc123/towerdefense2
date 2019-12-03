@@ -4,6 +4,9 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import sample.Config;
 import sample.Entity.Bullet.NormalBullet;
 import sample.Gamefield;
@@ -40,8 +43,13 @@ public class NormalTower extends Tower {
     @Override
     public void shooting(Group root){
         inCircle();
-        if (super.getEnemyNear().size() > 0)
-        root.getChildren().add((new NormalBullet(super.getPosX(),super.getPosY(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateX(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateY(),super.getDamage(),super.getEnemyNear())).drawBullet());
+        if (super.getEnemyNear().size() > 0){
+            Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/shoot.mp3");
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(true);
+            root.getChildren().add((new NormalBullet(super.getPosX(),super.getPosY(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateX(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateY(),super.getDamage(),super.getEnemyNear())).drawBullet());
+            root.getChildren().add(new MediaView(mediaPlayer));
+        }
         else root.getChildren().add(new Canvas(0,0));
     }
 }
