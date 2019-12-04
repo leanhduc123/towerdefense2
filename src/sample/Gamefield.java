@@ -17,10 +17,19 @@ public class Gamefield {
     private List<Point> pointList = new ArrayList<>();
     private List<Enemy> enemyList = new ArrayList<>();
     private int myHealth = 3;
+    private int myScore = 0;
     private int myGold = Config.myGold;
     private boolean isMute = false;
 
     public Gamefield(){
+    }
+
+    public int getMyScore() {
+        return myScore;
+    }
+
+    public void setMyScore(int myScore) {
+        this.myScore = myScore;
     }
 
     public void setMute(boolean mute) {
@@ -140,12 +149,14 @@ public class Gamefield {
         for (int i = 0; i < 4; i++){
             enemyList.add(new SmallEnemy(this));
         }
+
         for (int i = 0; i < 4; i++){
             enemyList.add(new NormalEnemy(this));
         }
         for (int i = 0; i < 6; i++){
             enemyList.add(new SmallEnemy(this));
         }
+
         for (int i = 0; i < 3; i++){
             enemyList.add(new NormalEnemy(this));
         }
@@ -155,6 +166,7 @@ public class Gamefield {
         for (int i = 0; i < 3; i++){
             enemyList.add(new TankerEnemy(this));
         }
+
         for (int i = 0; i < 2; i++){
             enemyList.add(new NormalEnemy(this));
         }
@@ -165,6 +177,17 @@ public class Gamefield {
             enemyList.add(new TankerEnemy(this));
         }
         enemyList.add(new BossEnemy(this));
+
+        for (int i = 0; i < 4; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        enemyList.add(new BossEnemy(this));
+        enemyList.add(new TankerEnemy(this));
+        enemyList.add(new BossEnemy(this));
+
     }
 
     public void removeEnemy(int k){

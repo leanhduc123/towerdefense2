@@ -43,19 +43,20 @@ public class Controller {
     }
 
     public void start(){
+        ImageView bar = new ImageView(new Image("file:src/resources/menu_bar.png"));
+        root.getChildren().add(bar);
         for (int i = 0; i < field.getMyHealth(); i++) {
-            root.getChildren().add(field.drawHeart(i*Config.TILE_SIZE+1000,30));
+            root.getChildren().add(field.drawHeart(i*Config.TILE_SIZE+950,10));
         }
         setTower();
         for (int k = 0; k < towerList.size(); k++)
             towerList.get(k).drawTower(root);
-        setName(500,40,"Money: ");
         Image sound;
         if (field.sound()) sound = new Image("file:src/mute.png");
         else sound = new Image("file:src/sound.png");
         ImageView imageView = new ImageView(sound);
-        imageView.setTranslateX(1200);
-        imageView.setTranslateY(50);
+        imageView.setTranslateX(1040);
+        imageView.setTranslateY(70);
         root.getChildren().add(imageView);
         imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -75,13 +76,17 @@ public class Controller {
         new AnimationTimer(){
             int i = 0;
             int j = 0;
-            int index = 1;
+            int level = 1;
             long lastEnemyRun = System.nanoTime();
             int health = field.getMyHealth();
-            Text gold = setName(670, 40, String.valueOf(field.getMyGold()));
+            Text Level = setName(575,33, "Level  " + level, 33);
+            Text score = setName(590, 82, String.valueOf(field.getMyScore()), 26);
+            Text gold = setName(60, 104, String.valueOf(field.getMyGold()), 18);
             public void handle(long currentNanoTime){
                 j++;
+                Level.setText("Level  " + level);
                 gold.setText(String.valueOf(field.getMyGold()));
+                score.setText(String.valueOf(field.getMyScore()));
                 for (int k = 0; k < towerList.size(); k++){
                     if (j % (towerList.get(k).getSpeed()*10) == 0) {
                         towerList.get(k).shooting(root);
@@ -90,15 +95,14 @@ public class Controller {
                     Upgrade(towerList.get(k));
                     if (j % 50 == 0) towerList.get(k).inCircle();
                 }
-                if (j % 100 == 0 && i < index*10 && i >= (index - 1)*10){
+                if (j % 100 == 0 && i < level*10 && i >= (level - 1)*10 && i < enemyList.size()){
                     enemyList.get(i).EnemyAppear(root);
                     lastEnemyRun = System.nanoTime();
                     i++;
-                    System.out.println(i + " " + index);
+                    System.out.println(i + " " + level);
                 }
-                if (System.nanoTime() - lastEnemyRun > 1e9 * 5 && index*10 < enemyList.size() && i == index*10){
-                    index++;
-                    System.out.println(index);
+                if (System.nanoTime() - lastEnemyRun > 1e9 * 8 && level*10 < enemyList.size() && i == level*10){
+                    level++;
                 }
                 if (health != field.getMyHealth()){
                     root.getChildren().add(field.removeHeart((field.getMyHealth())*60+1000,30));
@@ -114,19 +118,19 @@ public class Controller {
     }
     public void setTower(){
         ImageView normalTower = new ImageView(new Image("file:src/resources/tile/tower/normal.png"));
-        normalTower.setTranslateX(0);
-        normalTower.setTranslateY(0);
+        normalTower.setTranslateX(156);
+        normalTower.setTranslateY(16);
         normalTower.setFitWidth(Config.TILE_SIZE);
         normalTower.setFitHeight(Config.TILE_SIZE);
         TowerEvent event = new TowerEvent();
         ImageView sniperTower = new ImageView(new Image("file:src/resources/tile/tower/sniper.png"));
-        sniperTower.setTranslateX(60);
-        sniperTower.setTranslateY(0);
+        sniperTower.setTranslateX(336);
+        sniperTower.setTranslateY(16);
         sniperTower.setFitWidth(Config.TILE_SIZE);
         sniperTower.setFitHeight(Config.TILE_SIZE);
         ImageView machineGunTower = new ImageView(new Image("file:src/resources/tile/tower/machine_gun.png"));
-        machineGunTower.setTranslateX(120);
-        machineGunTower.setTranslateY(0);
+        machineGunTower.setTranslateX(246);
+        machineGunTower.setTranslateY(16);
         machineGunTower.setFitWidth(Config.TILE_SIZE);
         machineGunTower.setFitHeight(Config.TILE_SIZE);
         event.makeevent(normalTower,1);
@@ -197,7 +201,7 @@ public class Controller {
                             Config.MAP_SPRITES[yPos+1][xPos] != "1" &&
                             Config.MAP_SPRITES[yPos][xPos+1] != "1" &&
                             Config.MAP_SPRITES[yPos+1][xPos+1] != "1" &&
-                            YY >= 100 && !isSet) {
+                            YY >= 120 && !isSet) {
                         Tower tower;
                         if (kind == 1 && field.getMyGold() >= Config.NORMAL_TOWER_PRICE) {
                             tower = new NormalTower(XX, YY, field);
@@ -225,16 +229,16 @@ public class Controller {
             });
         }
     }
-    public Text setName(int posX, int posY, String name){
+    public Text setName(int posX, int posY, String name, int size){
         Text text = new Text(posX,posY,name);
-        text.setFont(Font.loadFont("file:src/resources/cs_regular.ttf",40));
+        text.setFont(Font.font("regular",size));
         text.setFontSmoothingType(FontSmoothingType.LCD);
         text.setFill(Color.BROWN);
         root.getChildren().add(text);
         return text;
     }
     public void Upgrade(Tower tower){
-        tower.getTower().setOnMousePressed(new EventHandler<MouseEvent>() {
+        tower.getTower().setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if (!tower.isUpgrade()){
