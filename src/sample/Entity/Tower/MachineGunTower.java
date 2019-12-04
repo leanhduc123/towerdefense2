@@ -12,7 +12,7 @@ import sample.Gamefield;
 
 public class MachineGunTower extends Tower {
     public MachineGunTower(int posX,int posY, Gamefield field){
-        super(posX,posY, Config.MACHINE_GUN_SPEED,Config.MACHINE_GUN_RANGE,Config.MACHINE_GUN_DAMAGE,field);
+        super(posX,posY, Config.MACHINE_GUN_SPEED,Config.MACHINE_GUN_RANGE,Config.MACHINE_GUN_DAMAGE,Config.MACHINE_GUN_PRICE,"file:src/resources/tile/tower/machine_gun_upgrade.png",field);
     }
     @Override
     public void drawTower(Group root){

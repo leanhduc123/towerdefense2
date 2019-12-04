@@ -3,11 +3,17 @@ package sample;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontSmoothingType;
+import javafx.scene.text.Text;
 import sample.Entity.Enemy.*;
 import sample.Entity.Tower.MachineGunTower;
 import sample.Entity.Tower.NormalTower;
@@ -32,18 +38,21 @@ public class Controller {
         this.stage = stage;
         mediaPlayer = new MediaPlayer(new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/soundtrack.mp3"));
         mediaPlayer.setAutoPlay(true);
-        mediaPlayer.setVolume(0.7);
+        if (field.sound()) mediaPlayer.setVolume(0);
+        else mediaPlayer.setVolume(0.7);
     }
 
     public void start(){
         for (int i = 0; i < field.getMyHealth(); i++) {
             root.getChildren().add(field.drawHeart(i*Config.TILE_SIZE+1000,30));
         }
-
         setTower();
         for (int k = 0; k < towerList.size(); k++)
             towerList.get(k).drawTower(root);
-        Image sound = new Image("file:src/sound.png");
+        setName(500,40,"Money: ");
+        Image sound;
+        if (field.sound()) sound = new Image("file:src/mute.png");
+        else sound = new Image("file:src/sound.png");
         ImageView imageView = new ImageView(sound);
         imageView.setTranslateX(1200);
         imageView.setTranslateY(50);
@@ -66,32 +75,37 @@ public class Controller {
         new AnimationTimer(){
             int i = 0;
             int j = 0;
-            int k = 1;
+            int index = 1;
             long lastEnemyRun = System.nanoTime();
             int health = field.getMyHealth();
+            Text gold = setName(670, 40, String.valueOf(field.getMyGold()));
             public void handle(long currentNanoTime){
                 j++;
+                gold.setText(String.valueOf(field.getMyGold()));
                 for (int k = 0; k < towerList.size(); k++){
                     if (j % (towerList.get(k).getSpeed()*10) == 0) {
                         towerList.get(k).shooting(root);
                     }
                     towerList.get(k).towerRotate();
+                    Upgrade(towerList.get(k));
                     if (j % 50 == 0) towerList.get(k).inCircle();
                 }
-                System.out.println(field.getMyGold());
-                if (j % 100 == 0 && i < k*10){
+                if (j % 100 == 0 && i < index*10 && i >= (index - 1)*10){
                     enemyList.get(i).EnemyAppear(root);
                     lastEnemyRun = System.nanoTime();
                     i++;
+                    System.out.println(i + " " + index);
                 }
-                if (System.nanoTime() - lastEnemyRun > 1e9 * 6 && k < 3){
-                    k++;
+                if (System.nanoTime() - lastEnemyRun > 1e9 * 5 && index*10 < enemyList.size() && i == index*10){
+                    index++;
+                    System.out.println(index);
                 }
                 if (health != field.getMyHealth()){
                     root.getChildren().add(field.removeHeart((field.getMyHealth())*60+1000,30));
                 }
                 if (field.getMyHealth() == 0){
                     stop();
+                    mediaPlayer.stop();
                     stage.restart();
                 }
                 health = field.getMyHealth();
@@ -210,5 +224,45 @@ public class Controller {
                 }
             });
         }
+    }
+    public Text setName(int posX, int posY, String name){
+        Text text = new Text(posX,posY,name);
+        text.setFont(Font.loadFont("file:src/resources/cs_regular.ttf",40));
+        text.setFontSmoothingType(FontSmoothingType.LCD);
+        text.setFill(Color.BROWN);
+        root.getChildren().add(text);
+        return text;
+    }
+    public void Upgrade(Tower tower){
+        tower.getTower().setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (!tower.isUpgrade()){
+                    creatButton(tower);
+                }
+            }
+        });
+    }
+    public void creatButton(Tower tower){
+        Button button = new Button("Upgrade");
+        Button cancel = new Button("Cancel");
+        VBox box = new VBox(button,cancel);
+        box.setTranslateX(tower.getPosX());
+        box.setTranslateY(tower.getPosY()+60);
+        root.getChildren().add(box);
+        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                tower.onUpgrade();
+                root.getChildren().remove(box);
+                tower.setUpgrade(true);
+            }
+        });
+        cancel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                root.getChildren().remove(box);
+            }
+        });
     }
 }

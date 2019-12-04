@@ -13,7 +13,7 @@ import sample.Gamefield;
 
 public class SniperTower extends Tower{
     public SniperTower(int posX,int posY, Gamefield field){
-        super(posX,posY, Config.SNIPER_TOWER_SPEED,Config.SNIPER_TOWER_RANGE,Config.SNIPER_TOWER_DAMAGE,field);
+        super(posX,posY, Config.SNIPER_TOWER_SPEED,Config.SNIPER_TOWER_RANGE,Config.SNIPER_TOWER_DAMAGE,Config.SNIPER_TOWER_PRICE,"file:src/resources/tile/tower/sniper_upgrade.png",field);
     }
     @Override
     public void drawTower(Group root){

@@ -1,35 +1,60 @@
 package sample.Entity.Tower;
 
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import sample.Entity.Enemy.Enemy;
+import sample.Entity.Upgradeable;
 import sample.Gamefield;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class Tower {
+public abstract class Tower implements Upgradeable {
     protected int posX;
     protected int posY;
     protected int speed;
     protected int range;
     protected int damage;
+    protected int price;
+    private boolean isClicked = false;
+    private boolean isUpgrade = false;
+    private String url;
     protected Gamefield field;
     protected ImageView tower;
     protected List<Enemy> enemyNear = new ArrayList<>();
 
-    public Tower(int posX,int posY,int speed, int range, int damage, Gamefield field){
+    public Tower(int posX,int posY,int speed, int range, int damage, int price, String url, Gamefield field){
         this.posX     = posX;
         this.posY     = posY;
-        this.speed  = speed;
         this.range  = range;
+        this.speed  = speed;
         this.damage = damage;
         this.field  = field;
+        this.price = price;
+        this.url = url;
+    }
+
+    public boolean isClicked() {
+        return isClicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        isClicked = clicked;
     }
 
     public void setTower(ImageView tower) {
         this.tower = tower;
+    }
+
+    public boolean isUpgrade() {
+        return isUpgrade;
+    }
+
+    public void setUpgrade(boolean isUpgrade){
+        this.isUpgrade = isUpgrade;
     }
 
     public ImageView getTower() {
@@ -69,6 +94,12 @@ public abstract class Tower {
         return enemyNear;
     }
 
+    @Override
+    public void onUpgrade(){
+        damage++;
+        field.setMyGold(field.getMyGold() - price/2);
+        tower.setImage(new Image(url));
+    }
 
     public abstract void drawTower(Group root);
 

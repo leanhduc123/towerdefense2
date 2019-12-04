@@ -17,7 +17,7 @@ import sample.Gamefield;
 public class NormalTower extends Tower {
 
     public NormalTower(int posX,int posY, Gamefield field){
-        super(posX,posY,Config.NORMAL_TOWER_SPEED,Config.NORMAL_TOWER_RANGE,Config.NORMAL_TOWER_DAMAGE,field);
+        super(posX,posY,Config.NORMAL_TOWER_SPEED,Config.NORMAL_TOWER_RANGE,Config.NORMAL_TOWER_DAMAGE,Config.NORMAL_TOWER_PRICE,"file:src/resources/tile/tower/normal_upgrade.png",field);
     }
     @Override
     public void drawTower(Group root){

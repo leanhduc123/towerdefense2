@@ -43,9 +43,12 @@ public class GameStage {
         Title title = new Title("You lose");
         title.setTranslateX(450);
         title.setTranslateY(200);
-
+        MenuItem soundItem;
+        if (field.sound()) soundItem = new MenuItem("Sound: Off");
+        else soundItem = new MenuItem("Sound: On");
         MenuBox menuBox = new MenuBox(
                 new MenuItem("Play again"),
+                soundItem,
                 new MenuItem("Exit")
         );
         menuBox.setTranslateX(480);
@@ -66,7 +69,7 @@ public class GameStage {
 
         MenuBox menuBox = new MenuBox(
                 new MenuItem("New Game"),
-                new MenuItem("Settings"),
+                new MenuItem("Sound: On"),
                 new MenuItem("Exit")
         );
         menuBox.setTranslateX(480);
@@ -150,12 +153,24 @@ public class GameStage {
                 else if (name == "Exit") System.exit(0);
                 else if (name == "Play again"){
                     canvas = new Canvas(Config.SCREEN_WIDTH,Config.SCREEN_HEIGHT);
+                    boolean isMute = field.sound();
                     field = new Gamefield();
+                    field.setMute(isMute);
                     field.drawMap(canvas.getGraphicsContext2D());
                     root.getChildren().add(canvas);
                     field.setMyHealth(3);
                     Controller controller = new Controller(root,field,stage);
                     controller.start();
+                }
+                 else if (text.getText() == "Sound: On"){
+                    text.setText("Sound: Off");
+                    System.out.println("Off");
+                    field.setMute(true);
+                }
+                 else if (text.getText() == "Sound: Off"){
+                    text.setText("Sound: On");
+                    System.out.println("On");
+                    field.setMute(false);
                 }
             });
         }

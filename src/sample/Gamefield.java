@@ -134,13 +134,34 @@ public class Gamefield {
     }
 
     public void addEnemy(){
-        for (int i = 0; i < 18; i++){
+        for (int i = 0; i < 16; i++){
             enemyList.add(new NormalEnemy(this));
         }
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < 4; i++){
             enemyList.add(new SmallEnemy(this));
         }
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < 4; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 6; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 4; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        for (int i = 0; i < 4; i++){
             enemyList.add(new TankerEnemy(this));
         }
         enemyList.add(new BossEnemy(this));
