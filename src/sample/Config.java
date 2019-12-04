@@ -27,6 +27,7 @@ public class Config {
     public static final int TILE_SIZE = 60;
     public static Spawner spawner = new Spawner();
     public static Target target = new Target();
+    public static final int myGold = 120;
 
     public static final int MACHINE_GUN_RANGE = 120;
     public static final int MACHINE_GUN_SPEED = 3;
@@ -34,7 +35,7 @@ public class Config {
     public static final int MACHINE_GUN_PRICE = 60;
 
     public static final int NORMAL_TOWER_RANGE = 180;
-    public static final int NORMAL_TOWER_SPEED = 12;
+    public static final int NORMAL_TOWER_SPEED = 7;
     public static final int NORMAL_TOWER_DAMAGE = 2;
     public static final int NORMAL_TOWER_PRICE = 50;
 
@@ -46,20 +47,20 @@ public class Config {
     public static final int NORMAL_ENEMY_HEALTH = 2;
     public static final int NORMAL_ENEMY_ARMOR = 1;
     public static final int NORMAL_ENEMY_SPEED = 4;
-    public static final int NORMAL_ENEMY_REWARD = 2;
+    public static final int NORMAL_ENEMY_REWARD = 5;
 
     public static final int TANK_ENEMY_HEALTH = 2;
-    public static final int TANK_ENEMY_ARMOR = 2;
+    public static final int TANK_ENEMY_ARMOR = 3;
     public static final int TANK_ENEMY_SPEED = 5;
-    public static final int TANK_ENEMY_REWARD = 2;
+    public static final int TANK_ENEMY_REWARD = 7;
 
     public static final int SMALL_ENEMY_HEALTH = 2;
     public static final int SMALL_ENEMY_ARMOR = 0;
     public static final int SMALL_ENEMY_SPEED = 3;
-    public static final int SMALL_ENEMY_REWARD = 1;
+    public static final int SMALL_ENEMY_REWARD = 3;
 
-    public static final int BOSS_ENEMY_HEALTH = 3;
-    public static final int BOSS_ENEMY_ARMOR = 3;
+    public static final int BOSS_ENEMY_HEALTH = 10;
+    public static final int BOSS_ENEMY_ARMOR = 12;
     public static final int BOSS_ENEMY_SPEED = 6;
-    public static final int BOSS_ENEMY_REWARD = 5;
+    public static final int BOSS_ENEMY_REWARD = 15;
 }

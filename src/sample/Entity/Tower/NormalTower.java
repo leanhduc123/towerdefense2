@@ -33,12 +33,6 @@ public class NormalTower extends Tower {
         tower.setFitWidth(Config.TILE_SIZE);
         tower.setFitHeight(Config.TILE_SIZE);
         setTower(tower);
-        tower.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                Button button = new Button();
-            }
-        });
         root.getChildren().add(tower);
     }
 
@@ -52,8 +46,8 @@ public class NormalTower extends Tower {
     public void shooting(Group root){
         inCircle();
         if (super.getEnemyNear().size() > 0 &&
-                (int)super.getEnemyNear().get(0).getCanvas().getTranslateX() > 0 &&
-                (int)super.getEnemyNear().get(0).getCanvas().getTranslateY() > 0){
+                (int)super.getEnemyNear().get(0).getCanvas().getTranslateX() > 10 &&
+                (int)super.getEnemyNear().get(0).getCanvas().getTranslateY() > 20){
             Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/shoot.mp3");
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setAutoPlay(true);

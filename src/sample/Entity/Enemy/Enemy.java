@@ -32,7 +32,7 @@ public abstract class Enemy implements Destroyable {
     }
 
     public Enemy(int health, int armor, int speed, int reward, Gamefield field){
-        this.health = health;
+        this.health = health + armor;
         this.armor = armor;
         this.speed = speed;
         this.reward = reward;

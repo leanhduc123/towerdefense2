@@ -96,7 +96,9 @@ public abstract class Tower {
     }
 
     public void towerRotate(){
-        if (enemyNear.size() > 0  && !enemyNear.get(0).hasDestroyed()){
+        if (enemyNear.size() > 0  && !enemyNear.get(0).hasDestroyed() &&
+                (int)enemyNear.get(0).getCanvas().getTranslateX() > 20 &&
+                (int)enemyNear.get(0).getCanvas().getTranslateY() > 20){
             Enemy enemy = enemyNear.get(0);
             double vectorX = - posX + enemy.getCanvas().getTranslateX();
             double vectorY = - posY + enemy.getCanvas().getTranslateY();

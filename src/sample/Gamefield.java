@@ -17,7 +17,7 @@ public class Gamefield {
     private List<Point> pointList = new ArrayList<>();
     private List<Enemy> enemyList = new ArrayList<>();
     private int myHealth = 3;
-    private int myGold = 1000;
+    private int myGold = Config.myGold;
     private boolean isMute = false;
 
     public Gamefield(){

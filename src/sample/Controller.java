@@ -66,6 +66,8 @@ public class Controller {
         new AnimationTimer(){
             int i = 0;
             int j = 0;
+            int k = 1;
+            long lastEnemyRun = System.nanoTime();
             int health = field.getMyHealth();
             public void handle(long currentNanoTime){
                 j++;
@@ -76,9 +78,14 @@ public class Controller {
                     towerList.get(k).towerRotate();
                     if (j % 50 == 0) towerList.get(k).inCircle();
                 }
-                if (j % 100 == 0 && i < 30){
+                System.out.println(field.getMyGold());
+                if (j % 100 == 0 && i < k*10){
                     enemyList.get(i).EnemyAppear(root);
+                    lastEnemyRun = System.nanoTime();
                     i++;
+                }
+                if (System.nanoTime() - lastEnemyRun > 1e9 * 6 && k < 3){
+                    k++;
                 }
                 if (health != field.getMyHealth()){
                     root.getChildren().add(field.removeHeart((field.getMyHealth())*60+1000,30));

@@ -41,7 +41,9 @@ public class SniperTower extends Tower{
     @Override
     public void shooting(Group root){
         inCircle();
-        if (super.getEnemyNear().size() > 0) {
+        if (super.getEnemyNear().size() > 0 &&
+                (int)super.getEnemyNear().get(0).getCanvas().getTranslateX() > 10 &&
+                (int)super.getEnemyNear().get(0).getCanvas().getTranslateY() > 20) {
             Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/shoot.mp3");
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setAutoPlay(true);
