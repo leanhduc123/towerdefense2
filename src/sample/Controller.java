@@ -112,13 +112,12 @@ public class Controller {
                     enemyList.get(i).EnemyAppear(root);
                     lastEnemyRun = System.nanoTime();
                     i++;
-                    System.out.println(i + " " + level);
                 }
                 if (System.nanoTime() - lastEnemyRun > 1e9 * 8 && level*10 < enemyList.size() && i == level*10){
                     level++;
                 }
                 if (health != field.getMyHealth()){
-                    root.getChildren().add(field.removeHeart((field.getMyHealth())*60+1000,30));
+                    root.getChildren().add(field.removeHeart((field.getMyHealth())*Config.TILE_SIZE+950,10));
                 }
                 if (field.getMyHealth() == 0){
                     stop();

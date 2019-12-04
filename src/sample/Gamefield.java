@@ -96,45 +96,37 @@ public class Gamefield {
                 pointList.add(new Point(j *60,(i+1)*60));
                 i++;
                 size++;
-                System.out.println(i + " " + j);
             }
             //Dung khi den target
              else if (Config.MAP_SPRITES[i+1][j] == "10"){
                 pointList.add(new Point(j*60,(i+1)*60));
-                System.out.println((i+1) + " " + j);
                 break;
             }
             else if (i > 0 && Config.MAP_SPRITES[i-1][j] == "1" && i-1 != pointList.get(size-2).getY()/60){
                 pointList.add(new Point(j*60,(i-1)*60));
                 i--;
                 size++;
-                System.out.println(i + " " + j);
             }
             else if (i > 0 && Config.MAP_SPRITES[i-1][j] == "10"){
                 pointList.add(new Point(j*60,(i-1)*60));
-                System.out.println((i-1) + " " + j);
                 break;
             }
             else if (j > 0 && Config.MAP_SPRITES[i][j-1] == "1" && j-1 != pointList.get(size-2).getX()/60){
                 pointList.add(new Point((j-1)*60,i*60));
                 j--;
                 size++;
-                System.out.println(i + " " + j);
             }
             else if (j > 0 && Config.MAP_SPRITES[i][j-1] == "10"){
                 pointList.add(new Point((j-1)*60,i*60));
-                System.out.println(i + " " + (j+1));
                 break;
             }
             else if (pointList.get(size-2).getX()/60 != j+1 && Config.MAP_SPRITES[i][j+1] == "1"){
                 pointList.add(new Point((j+1)*60,i*60));
                 j++;
                 size++;
-                System.out.println(i + " " + j);
             }
             else if (Config.MAP_SPRITES[i][j+1] == "10"){
                 pointList.add(new Point((j+1)*60,i*60));
-                System.out.println(i + " " + (j+1));
                 break;
             }
         }
@@ -201,8 +193,7 @@ public class Gamefield {
         return heart;
     }
     public ImageView removeHeart(int posX, int posY){
-        ImageView remove = new ImageView(new Image("file:src/resources/tile/2.png"));
-        ImageView remove2 = new ImageView(new Image("file:src/resources/tile/2.png"));
+        ImageView remove = new ImageView(new Image("file:src/resources/tile/remove.png"));
         remove.setX(posX);
         remove.setY(posY);
         return remove;

@@ -19,7 +19,6 @@ public abstract class Tower implements Upgradeable {
     protected int range;
     protected int damage;
     protected int price;
-    private boolean isClicked = false;
     private boolean isUpgrade = false;
     private String url;
     protected Gamefield field;
@@ -37,13 +36,6 @@ public abstract class Tower implements Upgradeable {
         this.url = url;
     }
 
-    public boolean isClicked() {
-        return isClicked;
-    }
-
-    public void setClicked(boolean clicked) {
-        isClicked = clicked;
-    }
 
     public void setTower(ImageView tower) {
         this.tower = tower;
@@ -76,14 +68,6 @@ public abstract class Tower implements Upgradeable {
 
     public int getDamage() {
         return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public int getRange() {
-        return range;
     }
 
     public Gamefield getField() {
