@@ -53,6 +53,10 @@ public abstract class Tower {
         return damage;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public int getRange() {
         return range;
     }
@@ -65,10 +69,6 @@ public abstract class Tower {
         return enemyNear;
     }
 
-    public void onDestroy(ImageView imageView){
-        imageView.setFitHeight(0);
-        imageView.setFitWidth(0);
-    }
 
     public abstract void drawTower(Group root);
 
@@ -104,7 +104,6 @@ public abstract class Tower {
             double Y = posX + (-posY/vectorY)*vectorX;
             double angle = Math.atan(Y/X) / (Math.PI) * 180;
             if (enemy.getCanvas().getTranslateY() >= posY) angle += 180;
-            if (tower == null) System.out.println("yes");
             tower.setRotate(angle);
         }
     }

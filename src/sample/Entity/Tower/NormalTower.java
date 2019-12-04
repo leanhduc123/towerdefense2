@@ -1,12 +1,14 @@
 package sample.Entity.Tower;
 
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import sample.Config;
 import sample.Entity.Bullet.NormalBullet;
 import sample.Gamefield;
@@ -31,6 +33,12 @@ public class NormalTower extends Tower {
         tower.setFitWidth(Config.TILE_SIZE);
         tower.setFitHeight(Config.TILE_SIZE);
         setTower(tower);
+        tower.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Button button = new Button();
+            }
+        });
         root.getChildren().add(tower);
     }
 
@@ -43,11 +51,14 @@ public class NormalTower extends Tower {
     @Override
     public void shooting(Group root){
         inCircle();
-        if (super.getEnemyNear().size() > 0){
+        if (super.getEnemyNear().size() > 0 &&
+                (int)super.getEnemyNear().get(0).getCanvas().getTranslateX() > 0 &&
+                (int)super.getEnemyNear().get(0).getCanvas().getTranslateY() > 0){
             Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/shoot.mp3");
             MediaPlayer mediaPlayer = new MediaPlayer(media);
-            if (!getField().sound()) mediaPlayer.setAutoPlay(true);
-            else mediaPlayer.setAutoPlay(false);
+            mediaPlayer.setAutoPlay(true);
+            if (!getField().sound()) mediaPlayer.setVolume(0.5);
+            else mediaPlayer.setVolume(0);
             root.getChildren().add((new NormalBullet(super.getPosX(),super.getPosY(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateX(),(int)super.getEnemyNear().get(0).getCanvas().getTranslateY(),super.getDamage(),super.getEnemyNear())).drawBullet());
         }
         else root.getChildren().add(new Canvas(0,0));

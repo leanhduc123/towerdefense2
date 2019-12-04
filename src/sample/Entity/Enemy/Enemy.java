@@ -28,6 +28,7 @@ public abstract class Enemy implements Destroyable {
     public void onDestroy(Canvas canvas){
         canvas.setHeight(0);
         canvas.setWidth(0);
+        if (health <= 0) field.setMyGold(field.getMyGold() + reward);
     }
 
     public Enemy(int health, int armor, int speed, int reward, Gamefield field){

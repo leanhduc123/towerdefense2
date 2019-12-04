@@ -1,10 +1,8 @@
 package sample;
 
-import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import sample.Entity.Enemy.*;
 import sample.Entity.Map.Mountain;
 import sample.Entity.Map.Road;
@@ -19,6 +17,7 @@ public class Gamefield {
     private List<Point> pointList = new ArrayList<>();
     private List<Enemy> enemyList = new ArrayList<>();
     private int myHealth = 3;
+    private int myGold = 1000;
     private boolean isMute = false;
 
     public Gamefield(){
@@ -26,6 +25,14 @@ public class Gamefield {
 
     public void setMute(boolean mute) {
         isMute = mute;
+    }
+
+    public int getMyGold() {
+        return myGold;
+    }
+
+    public void setMyGold(int myGold) {
+        this.myGold = myGold;
     }
 
     public boolean sound(){
@@ -156,48 +163,5 @@ public class Gamefield {
         remove.setY(posY);
         return remove;
     }
-}
 
-//    public static void buyTower(Tower tower, Pane root) {
-//        tower.imageView.setOnMousePressed(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                tower.imageView.setX(event.getX()-20);
-//                tower.imageView.setY(event.getY()-20);
-//            }
-//        });
-//        tower.imageView.setOnMouseDragged(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                tower.imageView.setX(event.getX()-20);
-//                tower.imageView.setY(event.getY()-20);
-//            }
-//        });
-//        tower.imageView.setOnMouseReleased(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                if(tower.getName().equals("MachineGunTower") && GameStage.Matrix[(int)tower.imageView.getY()/40][(int)tower.imageView.getX()/40]==0 && tower.imageView.getX()<=800 && tower.imageView.getY()<=720){
-//                    Tower newTower = new MachineGunTower((int)tower.imageView.getX()/40,(int)tower.imageView.getY()/40);
-//                    root.getChildren().add(newTower.imageView);
-//                    towers.add(newTower);
-//
-//                } else if(tower.getName().equals("NormalTower") && GameStage.Matrix[(int)tower.imageView.getY()/40][(int)tower.imageView.getX()/40]==0 && tower.imageView.getX()<=800 && tower.imageView.getY()<=720){
-//                    Tower newTower = new NormalTower((int)tower.imageView.getX()/40,(int)tower.imageView.getY()/40);
-//                    root.getChildren().add(newTower.imageView);
-//                    towers.add(newTower);
-//
-//                } else if(tower.getName().equals("SniperTower") && GameStage.Matrix[(int)tower.imageView.getY()/40][(int)tower.imageView.getX()/40]==0 && tower.imageView.getX()<=800 && tower.imageView.getY()<=720){
-//                    Tower newTower = new SniperTower((int)tower.imageView.getX()/40,(int)tower.imageView.getY()/40);
-//                    root.getChildren().add(newTower.imageView);
-//                    towers.add(newTower);
-//                } else {
-//                    tower.imageView.setX(tower.getX());
-//                    tower.imageView.setY(tower.getY());
-//                }
-//
-//                tower.imageView.setX(tower.getX());
-//                tower.imageView.setY(tower.getY());
-//
-//            }
-//        });
-//    }
+}

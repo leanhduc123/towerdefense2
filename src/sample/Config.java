@@ -15,10 +15,10 @@ public class Config {
             { "2", "2", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2", "2", "2", "2", "1", "2", "2", "2", "2", "2"},
             { "2", "2", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2", "1", "1", "1", "1", "2", "2", "2", "2", "2"},
             { "3", "2", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2", "1", "2", "2", "2", "2", "2", "2", "2", "2"},
-            { "2", "3", "2", "1", "1", "1", "1", "2", "1", "2", "2", "2", "1", "2", "2", "2", "2", "2", "2", "2", "2"},
-            { "2", "2", "2", "2", "2", "2", "1", "2", "1", "2", "2", "2", "1", "2", "2", "2", "2", "1", "1", "1", "10"},
-            { "3", "2", "2", "2", "2", "2", "1", "2", "1", "2", "2", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2"},
-            { "2", "2", "2", "2", "2", "2", "1", "1", "1", "2", "2", "2", "1", "1", "1", "1", "1", "1", "2", "2", "2"},
+            { "2", "3", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2", "1", "2", "2", "2", "2", "2", "2", "2", "2"},
+            { "2", "2", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2", "1", "2", "2", "2", "2", "1", "1", "1", "10"},
+            { "3", "2", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2", "1", "2", "2", "2", "2", "1", "2", "2", "2"},
+            { "2", "2", "2", "1", "1", "1", "1", "1", "1", "2", "2", "2", "1", "1", "1", "1", "1", "1", "2", "2", "2"},
             { "2", "2", "3", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2"},
             { "8", "2", "2", "8", "2", "2", "2", "2", "2", "2", "6", "2", "2", "2", "2", "2", "2", "3", "2", "2", "7"}
     };
@@ -29,16 +29,19 @@ public class Config {
     public static Target target = new Target();
 
     public static final int MACHINE_GUN_RANGE = 120;
-    public static final int MACHINE_GUN_SPEED = 2;
+    public static final int MACHINE_GUN_SPEED = 3;
     public static final int MACHINE_GUN_DAMAGE = 1;
+    public static final int MACHINE_GUN_PRICE = 60;
 
     public static final int NORMAL_TOWER_RANGE = 180;
-    public static final int NORMAL_TOWER_SPEED = 3;
+    public static final int NORMAL_TOWER_SPEED = 12;
     public static final int NORMAL_TOWER_DAMAGE = 2;
+    public static final int NORMAL_TOWER_PRICE = 50;
 
     public static final int SNIPER_TOWER_RANGE = 300;
-    public static final int SNIPER_TOWER_SPEED = 2;
+    public static final int SNIPER_TOWER_SPEED = 12;
     public static final int SNIPER_TOWER_DAMAGE = 4;
+    public static final int SNIPER_TOWER_PRICE = 70;
 
     public static final int NORMAL_ENEMY_HEALTH = 2;
     public static final int NORMAL_ENEMY_ARMOR = 1;

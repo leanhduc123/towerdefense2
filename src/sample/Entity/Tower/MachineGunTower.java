@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import sample.Config;
 import sample.Entity.Bullet.MachineGunBullet;
 import sample.Gamefield;
@@ -28,6 +27,7 @@ public class MachineGunTower extends Tower {
         tower.setY(super.getPosY());
         tower.setFitWidth(Config.TILE_SIZE);
         tower.setFitHeight(Config.TILE_SIZE);
+        setTower(tower);
         root.getChildren().add(tower);
     }
 
@@ -43,8 +43,9 @@ public class MachineGunTower extends Tower {
         if (super.getEnemyNear().size() > 0) {
             Media media = new Media("File:/C:/Users/Asus/IdeaProjects/towerdefense2/src/shoot.mp3");
             MediaPlayer mediaPlayer = new MediaPlayer(media);
-            if (!getField().sound()) mediaPlayer.setAutoPlay(true);
-            else mediaPlayer.setAutoPlay(false);
+            mediaPlayer.setAutoPlay(true);
+            if (!getField().sound()) mediaPlayer.setVolume(0.5);
+            else mediaPlayer.setVolume(0);
             root.getChildren().add((new MachineGunBullet(super.getPosX(), super.getPosY(), (int) super.getEnemyNear().get(0).getCanvas().getTranslateX(), (int) super.getEnemyNear().get(0).getCanvas().getTranslateY(), super.getDamage(), super.getEnemyNear())).drawBullet());
         }
         else root.getChildren().add(new Canvas(0,0));
