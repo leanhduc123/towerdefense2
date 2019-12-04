@@ -34,13 +34,13 @@ public class GameStage {
         this.root = root;
     }
 
-    public void restart(){
+    public void restart(String name){
         ImageView img = new ImageView(new Image("file:src/resources/mainmenu.png"));
         img.setFitHeight(Config.SCREEN_HEIGHT);
         img.setFitWidth(Config.SCREEN_WIDTH);
         root.getChildren().add(img);
 
-        Title title = new Title("You lose");
+        Title title = new Title(name);
         title.setTranslateX(450);
         title.setTranslateY(200);
         MenuItem soundItem;

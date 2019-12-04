@@ -73,6 +73,11 @@ public class Controller {
                 }
             }
         });
+
+        ImageView quit = new ImageView(new Image("file:src/resources/tile/quit.png"));
+        quit.setTranslateX(1200);
+        quit.setTranslateY(80);
+        root.getChildren().add(quit);
         new AnimationTimer(){
             int i = 0;
             int j = 0;
@@ -87,6 +92,14 @@ public class Controller {
                 Level.setText("Level  " + level);
                 gold.setText(String.valueOf(field.getMyGold()));
                 score.setText(String.valueOf(field.getMyScore()));
+                quit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        stop();
+                        mediaPlayer.stop();
+                        stage.restart("You're Out");
+                    }
+                });
                 for (int k = 0; k < towerList.size(); k++){
                     if (j % (towerList.get(k).getSpeed()*10) == 0) {
                         towerList.get(k).shooting(root);
@@ -110,7 +123,7 @@ public class Controller {
                 if (field.getMyHealth() == 0){
                     stop();
                     mediaPlayer.stop();
-                    stage.restart();
+                    stage.restart("You Lose");
                 }
                 health = field.getMyHealth();
             }
