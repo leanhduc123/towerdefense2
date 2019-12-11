@@ -84,7 +84,7 @@ public class Gamefield {
                     new Mountain(gc, j*Config.TILE_SIZE, i*Config.TILE_SIZE, Config.MAP_SPRITES[i][j]);
                 }
             }
-        //pointList
+        //pointList dung de tim duong
         pointList.add(new Point(Config.spawner.getPosX(),Config.spawner.getPosY()));
         pointList.add(new Point(Config.spawner.getPosX(),Config.spawner.getPosY()));
         int j = Config.spawner.getPosX()/60;
@@ -135,20 +135,21 @@ public class Gamefield {
     }
 
     public void addEnemy(){
+        //level 1 2
         for (int i = 0; i < 16; i++){
             enemyList.add(new NormalEnemy(this));
         }
         for (int i = 0; i < 4; i++){
             enemyList.add(new SmallEnemy(this));
         }
-
+        //level 3
         for (int i = 0; i < 4; i++){
             enemyList.add(new NormalEnemy(this));
         }
         for (int i = 0; i < 6; i++){
             enemyList.add(new SmallEnemy(this));
         }
-
+        //level 4
         for (int i = 0; i < 3; i++){
             enemyList.add(new NormalEnemy(this));
         }
@@ -158,7 +159,7 @@ public class Gamefield {
         for (int i = 0; i < 3; i++){
             enemyList.add(new TankerEnemy(this));
         }
-
+        //level 5
         for (int i = 0; i < 2; i++){
             enemyList.add(new NormalEnemy(this));
         }
@@ -169,7 +170,7 @@ public class Gamefield {
             enemyList.add(new TankerEnemy(this));
         }
         enemyList.add(new BossEnemy(this));
-
+        //level 6
         for (int i = 0; i < 4; i++){
             enemyList.add(new TankerEnemy(this));
         }
@@ -179,7 +180,145 @@ public class Gamefield {
         enemyList.add(new BossEnemy(this));
         enemyList.add(new TankerEnemy(this));
         enemyList.add(new BossEnemy(this));
-
+        //level 7
+        for (int i = 0; i < 5; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 5; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        //level 8
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new BossEnemy(this));
+        }
+        //level 9
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new BossEnemy(this));
+        }
+        for (int i = 0; i < 1; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        //level 10
+        for (int i = 0; i < 1; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new BossEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        //level 11
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 5; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        //level 12
+        for (int i = 0; i < 10; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        //level 13
+        for (int i = 0; i < 10; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        //level 14
+        for (int i = 0; i < 10; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        //level 15
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new BossEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        //level 16
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 4; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        for (int i = 0; i < 1; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        //level 17
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 4; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 4; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        //level 18
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new BossEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        //level 19
+        for (int i = 0; i < 1; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
+        for (int i = 0; i < 3; i++){
+            enemyList.add(new SmallEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new NormalEnemy(this));
+        }
+        for (int i = 0; i < 2; i++){
+            enemyList.add(new TankerEnemy(this));
+        }
     }
 
     public void removeEnemy(int k){

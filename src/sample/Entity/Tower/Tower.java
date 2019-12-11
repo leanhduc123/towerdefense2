@@ -70,6 +70,10 @@ public abstract class Tower implements Upgradeable {
         return damage;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public Gamefield getField() {
         return field;
     }

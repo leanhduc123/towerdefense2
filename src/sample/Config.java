@@ -44,23 +44,23 @@ public class Config {
     public static final int SNIPER_TOWER_DAMAGE = 4;
     public static final int SNIPER_TOWER_PRICE = 70;
 
-    public static final int NORMAL_ENEMY_HEALTH = 2;
-    public static final int NORMAL_ENEMY_ARMOR = 1;
+    public static final int NORMAL_ENEMY_HEALTH = 4;
+    public static final int NORMAL_ENEMY_ARMOR = 3;
     public static final int NORMAL_ENEMY_SPEED = 4;
-    public static final int NORMAL_ENEMY_REWARD = 5;
+    public static final int NORMAL_ENEMY_REWARD = 8;
 
-    public static final int TANK_ENEMY_HEALTH = 2;
-    public static final int TANK_ENEMY_ARMOR = 3;
+    public static final int TANK_ENEMY_HEALTH = 6;
+    public static final int TANK_ENEMY_ARMOR = 6;
     public static final int TANK_ENEMY_SPEED = 5;
-    public static final int TANK_ENEMY_REWARD = 7;
+    public static final int TANK_ENEMY_REWARD = 15;
 
-    public static final int SMALL_ENEMY_HEALTH = 2;
-    public static final int SMALL_ENEMY_ARMOR = 0;
-    public static final int SMALL_ENEMY_SPEED = 3;
-    public static final int SMALL_ENEMY_REWARD = 3;
+    public static final int SMALL_ENEMY_HEALTH = 3;
+    public static final int SMALL_ENEMY_ARMOR = 2;
+    public static final int SMALL_ENEMY_SPEED = 2;
+    public static final int SMALL_ENEMY_REWARD = 4;
 
-    public static final int BOSS_ENEMY_HEALTH = 10;
-    public static final int BOSS_ENEMY_ARMOR = 12;
+    public static final int BOSS_ENEMY_HEALTH = 30;
+    public static final int BOSS_ENEMY_ARMOR = 30;
     public static final int BOSS_ENEMY_SPEED = 6;
-    public static final int BOSS_ENEMY_REWARD = 15;
+    public static final int BOSS_ENEMY_REWARD = 25;
 }

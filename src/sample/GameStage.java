@@ -43,6 +43,14 @@ public class GameStage {
         Title title = new Title(name);
         title.setTranslateX(450);
         title.setTranslateY(200);
+
+        Text score = new Text("Score: " + field.getMyScore());
+        score.setFill(Color.WHITE);
+        score.setFont(Font.font("Tw Cen MT Condensed",FontWeight.SEMI_BOLD,53));
+
+        score.setTranslateX(560);
+        score.setTranslateY(330);
+
         MenuItem soundItem;
         if (field.sound()) soundItem = new MenuItem("Sound: Off");
         else soundItem = new MenuItem("Sound: On");
@@ -52,8 +60,8 @@ public class GameStage {
                 new MenuItem("Exit")
         );
         menuBox.setTranslateX(480);
-        menuBox.setTranslateY(300);
-        root.getChildren().addAll(title,menuBox);
+        menuBox.setTranslateY(350);
+        root.getChildren().addAll(title,score,menuBox);
     }
 
     //Main Menu

@@ -269,9 +269,11 @@ public class Controller {
         button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                tower.onUpgrade();
-                root.getChildren().remove(box);
-                tower.setUpgrade(true);
+                if (field.getMyGold() >= tower.getPrice()/2) {
+                    tower.onUpgrade();
+                    root.getChildren().remove(box);
+                    tower.setUpgrade(true);
+                }
             }
         });
         cancel.setOnMouseClicked(new EventHandler<MouseEvent>() {
